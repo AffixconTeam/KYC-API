@@ -63,8 +63,8 @@ async def verify_user(data: UserData, credentials: HTTPBasicCredentials = Depend
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
 
     # # Fetch the first table name
-    # table_name = cursor.fetchone()[0]
-    return cursor
+    table_name = cursor.fetchone()[0]
+    return table_name
     # try:
     #     # session = Session.builder.configs(conn_params).create()
     #     first_name_condition = build_match_conditions(data.FirstName.upper(), 'GIVEN_NAME_1','FULL_NAME') if data.FirstName else "0"
