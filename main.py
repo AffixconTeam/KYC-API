@@ -54,17 +54,17 @@ async def verify_user(data: UserData, credentials: HTTPBasicCredentials = Depend
     
     start_time = time.time()
 
-    connection = sqlite3.connect(f'artifacts\\{data.CountryPrefix}.db')
+    # connection = sqlite3.connect(f'artifacts\\{data.CountryPrefix}.db')
 
-    # Create a cursor object
-    cursor = connection.cursor()
+    # # Create a cursor object
+    # cursor = connection.cursor()
 
-    # Query to get the list of tables in the database
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    # # Query to get the list of tables in the database
+    # cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
 
-    # Fetch the first table name
-    table_name = cursor.fetchone()[0]
-    return table_name
+    # # Fetch the first table name
+    # table_name = cursor.fetchone()[0]
+    return data.CountryPrefix
     # try:
     #     # session = Session.builder.configs(conn_params).create()
     #     first_name_condition = build_match_conditions(data.FirstName.upper(), 'GIVEN_NAME_1','FULL_NAME') if data.FirstName else "0"
