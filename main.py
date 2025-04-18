@@ -54,7 +54,8 @@ async def verify_user(data: UserData, credentials: HTTPBasicCredentials = Depend
     
     start_time = time.time()
 
-    connection = sqlite3.connect(f'artifacts\\{data.CountryPrefix}.db')
+    # connection = sqlite3.connect(f'artifacts\\{data.CountryPrefix}.db')
+    connection = sqlite3.connect(f'{data.CountryPrefix}.db')
 
     # # Create a cursor object
     cursor = connection.cursor()
