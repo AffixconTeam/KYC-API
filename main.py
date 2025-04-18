@@ -269,7 +269,7 @@ async def verify_user(data: UserData, credentials: HTTPBasicCredentials = Depend
             df['EmailMatch'] = True if df['EMAIL'][0] == data.Email else False
         
 
-        if data.CountryPrefix in ('indonisia','mx','uae','saudi'):
+        if data.CountryPrefix in ('indonesia','mx','uae','saudi'):
             df['addressElement1_similarity'] = df[['FULL_ADDRESS', 'AD1']].apply(lambda x: max(fuzz.token_set_ratio(x[0].lower(), data.AddressElement1.lower()), fuzz.partial_token_sort_ratio(x[1].lower(), data.AddressElement1.lower())), axis=1).apply(lambda score: int(score) if score > 65 else 0) 
             weight1 = 50 if 85<=df['addressElement1_similarity'][0] <=100 else 30 if 70<=df['addressElement1_similarity'][0] <85 else 0 
             
@@ -414,7 +414,7 @@ async def verify_user(data: UserData, credentials: HTTPBasicCredentials = Depend
             col_order = ["NameMatchLevel", "FullNameScore", "Given Name 1 Score", "Given Name 2 Score",
                     "SurnameScore", "AddressMatchLevel", "FullAddressScore","Address Line Score",
                     "Suburb Score","State Score", "Postcde Score","DOBMatch"]
-        if data.CountryPrefix in ('indonisia','mx','uae','saudi'):
+        if data.CountryPrefix in ('indonesia','mx','uae','saudi'):
             similarity_returned_df = df_transposed.loc[["First Name Similarity","Middle Name Similarity","Surname Similarity",
                 "full_name_similarity","NameMatchLevel","dob_match","addressElement1_similarity",
                 "addressElement2_similarity","addressElement3_similarity","addressElement4_similarity","AddressMatchLevel","FullAddressScore","MobileMatch","EmailMatch"]]
@@ -430,7 +430,7 @@ async def verify_user(data: UserData, credentials: HTTPBasicCredentials = Depend
                     "DOBMatch"]
 
         # st.markdown(':green[**Scoring**]')
-        if data.CountryPrefix not in ('indonisia','mx','uae','saudi'):
+        if data.CountryPrefix not in ('indonesia','mx','uae','saudi'):
             similarity_returned_df.rename({"Given Name 1 Similarity":"Given Name 1 Score", "Given Name 2 Similarity":"Given Name 2 Score",
                                     "SurName Similarity":"SurnameScore","full_name_similarity":"FullNameScore",
                                     "dob_match":"DOBMatch","address_line_similarity":"Address Line Score","suburb_similarity":"Suburb Score",
