@@ -553,10 +553,10 @@ def get_matching_level(df,dob,mobile,email,name_matching_score,address_matching_
     for score_range, level in address_score_levels.items():
         if score_range[0] <= address_matching_weights <= score_range[1]:
             levels.append(f'{level} - {int(address_matching_weights)}'+"%")
-    if 'DOB' in df.columns and pd.notna(df.DOB.iloc[0]) and str(df.DOB.iloc[0]) == dob:
+    if 'DOB_YYYYMMDD_DATE' in df.columns and pd.notna(df.DOB_YYYYMMDD_DATE.iloc[0]) and str(df.DOB_YYYYMMDD_DATE.iloc[0]) == dob:
         levels.append('DOB - 100%')
 
-    if 'MOBILE' in df.columns and pd.notna(df.MOBILE.iloc[0]) and df.MOBILE.iloc[0] == mobile:
+    if 'MOBILE' in df.columns and pd.notna(df.MOBILE.iloc[0]) and str(int(df['MOBILE'].iloc[0])) == str(mobile):
         levels.append('Mobile - 100%')
     if ((df.EMAIL[0] in df.EMAIL[0] and df.EMAIL[0] != "") and df.EMAIL[0] == email):
         levels.append('Email - 100%')
